@@ -1,5 +1,8 @@
 # customer.io bundle
 
+[![Build Status](https://travis-ci.org/pulse00/customerio-bundle.svg?branch=master)](https://travis-ci.org/pulse00/customerio-bundle)
+
+
 Symfony integration for http://customer.io.
 
 ## Configuration
@@ -10,11 +13,11 @@ Then configure your `site_id`  and `api_key`:
 
 
 ```yml
-    # app/config/config.yml
+# app/config/config.yml
 
-    dubture_customer_io:
-      site_id: <YOUR-SITE-ID>
-      api_key: <YOUR-API-KEY>
+dubture_customer_io:
+  site_id: <YOUR-SITE-ID>
+  api_key: <YOUR-API-KEY>
 
 ```
 
@@ -28,19 +31,19 @@ Implement `Dubture\CustomerIOBundle\Model\CustomerInterfcae` on your customer do
 
 ```php
 
-    use Dubture\CustomerIOBundle\Event\TrackingEvent;
-    use Dubture\CustomerIOBundle\Event\ActionEvent;
+use Dubture\CustomerIOBundle\Event\TrackingEvent;
+use Dubture\CustomerIOBundle\Event\ActionEvent;
 
-    /** @var \Symfony\Component\EventDispatcher\EventDispatcher $tracker */
-    $dispatcher = $this->getContainer()->get('event_dispatcher');
+/** @var \Symfony\Component\EventDispatcher\EventDispatcher $tracker */
+$dispatcher = $this->getContainer()->get('event_dispatcher');
 
-    $customer = $someRepo->getCustomer(); // retrieve your customer domain object
+$customer = $someRepo->getCustomer(); // retrieve your customer domain object
 
-    // send the customer over to customer.io for identification
-    $dispatcher->dispatch(TrackingEvent::IDENTIFY, new TrackingEvent($customer));
+// send the customer over to customer.io for identification
+$dispatcher->dispatch(TrackingEvent::IDENTIFY, new TrackingEvent($customer));
 
-    // now track a `click` event
-    $dispatcher->dispatch(TrackingEvent::ACTION, new ActionEvent($customer, 'click'));
+// now track a `click` event
+$dispatcher->dispatch(TrackingEvent::ACTION, new ActionEvent($customer, 'click'));
 
 ```
 
@@ -53,37 +56,38 @@ The bundle comes with a controller which can consume customer.io [webhooks](http
 To use them, register the routing.xml:
 
 ```yml
-    # app/config/routing.yml
+# app/config/routing.yml
 
-    customerio_hooks:
-        resource: "@DubtureCustomerIOBundle/Resources/config/routing.xml"
+customerio_hooks:
+    resource: "@DubtureCustomerIOBundle/Resources/config/routing.xml"
 
 ```
 
-Now your hook url will be `http://your.project.com//__dubture/customerio` which you need to configure
-over at customer.io.
+Now your hook url will be `http://your.project.com//__dubture/customerio` which you
+need to configure over at customer.io.
 
 After doing so, you can listen to webhook events:
 
 
 ```xml
 
-    <service id="acme.webhooklistener" class="Acme\DemoBundle\Listener\WebhookListener">
-        <tag name="kernel.event_listener" event="customerio.email_opened" method="onClick" />
-    </service>
+<service id="acme.webhooklistener" class="Acme\DemoBundle\Listener\WebhookListener">
+    <tag name="kernel.event_listener" event="customerio.email_opened" method="onClick" />
+</service>
 
 ```
 
 ```php
 
-    use Dubture\CustomerIOBundle\Event\WebHookEvent;
+use Dubture\CustomerIOBundle\Event\WebHookEvent;
 
-    class WebhookListener
+class WebhookListener
+{
+    public function onClick(WebHookEvent $event)
     {
-        public function onClick(WebHookEvent $event)
-        {
-            $this->logger->info('Customer clicked on email with address: ' . $event->getEmail());
-        }
+        $this->logger->info('Customer clicked on email with address: '
+        . $event->getEmail());
     }
+}
 
 ```

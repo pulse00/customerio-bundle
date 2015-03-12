@@ -5,6 +5,7 @@
 
 Symfony integration for http://customer.io.
 
+
 ## Configuration
 
 Install the bundle using composer and register it in your Kernel.

@@ -1,6 +1,8 @@
 # customer.io bundle
 
 [![Build Status](https://travis-ci.org/pulse00/customerio-bundle.svg?branch=master)](https://travis-ci.org/pulse00/customerio-bundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pulse00/customerio-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pulse00/customerio-bundle/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/pulse00/customerio-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pulse00/customerio-bundle/?branch=master)
 
 
 Symfony integration for http://customer.io.

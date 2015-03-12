@@ -1,0 +1,2 @@
+customerio_hooks:
+    resource: "@DubtureCustomerIOBundle/Resources/config/routing.xml"

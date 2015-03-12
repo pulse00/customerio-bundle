@@ -1,0 +1,19 @@
+framework:
+    test: ~
+    secret:          secret
+    router:          { resource: "%kernel.root_dir%/routing.yml" }
+
+dubture_customer_io:
+  site_id: foo
+  api_key: bar
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: error
+            handler:      nested
+        nested:
+            type:  stream
+            path:  %kernel.logs_dir%/%kernel.environment%.log
+            level: debug

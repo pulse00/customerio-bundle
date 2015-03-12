@@ -1,0 +1,30 @@
+{
+  "name": "dubture/customerio-bundle",
+  "description": "Integrates customer.io into Symfony",
+  "type": "symfony-bundle",
+  "keywords": [
+    "symfony",
+    "customer.io",
+    "customer retention"
+  ],
+  "license": "MIT",
+  "require": {
+    "symfony/framework-bundle": ">=2.3",
+    "userscape/customerio": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.5",
+    "symfony/finder": "~2.2",
+    "symfony/browser-kit": "~2.2",
+    "symfony/monolog-bundle": "~2.2"
+  },
+  "authors": [
+    {
+      "name": "Robert Gruendler",
+      "email": "robert@dubture.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"Dubture\\CustomerIOBundle\\": ""}
+  }
+}

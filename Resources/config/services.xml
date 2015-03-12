@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="dubture_customer_io.tracker.class">Dubture\CustomerIOBundle\Tracking\EventTracker</parameter>
+    </parameters>
+
+
+    <services>
+
+        <service id="dubture_customer_io.request" class="Customerio\Request" public="false"/>
+
+        <service id="dubture_customer_io.api" class="Customerio\Api">
+            <argument>%customerio.site_id%</argument>
+            <argument>%customerio.api_key%</argument>
+            <argument type="service" id="dubture_customer_io.request" />
+        </service>
+
+        <service id="dubture_customer_io.tracker" class="%dubture_customer_io.tracker.class%">
+            <argument type="service" id="dubture_customer_io.api" />
+            <argument type="service" id="logger" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+    </services>
+
+</container>

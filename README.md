@@ -27,7 +27,7 @@ dubture_customer_io:
 
 ### Customer model
 
-Implement `Dubture\CustomerIOBundle\Model\CustomerInterfcae` on your customer domain class.
+Implement `Dubture\CustomerIOBundle\Model\CustomerInterface` on your customer domain class.
 
 ### Event Tracking / Customer identification
 
@@ -74,7 +74,7 @@ After doing so, you can listen to webhook events:
 ```xml
 
 <service id="acme.webhooklistener" class="Acme\DemoBundle\Listener\WebhookListener">
-    <tag name="kernel.event_listener" event="customerio.email_opened" method="onClick" />
+    <tag name="kernel.event_listener" event="customerio.email_clicked" method="onClick" />
 </service>
 
 ```

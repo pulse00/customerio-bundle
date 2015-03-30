@@ -3,6 +3,9 @@
 [![Build Status](https://travis-ci.org/pulse00/customerio-bundle.svg?branch=master)](https://travis-ci.org/pulse00/customerio-bundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pulse00/customerio-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pulse00/customerio-bundle/?branch=master)
 
+[![Latest Stable Version](https://poser.pugx.org/dubture/customerio-bundle/v/stable.svg)](https://packagist.org/packages/dubture/customerio-bundle) [![Total Downloads](https://poser.pugx.org/dubture/customerio-bundle/downloads.svg)](https://packagist.org/packages/dubture/customerio-bundle) [![License](https://poser.pugx.org/dubture/customerio-bundle/license.svg)](https://packagist.org/packages/dubture/customerio-bundle)
+
+
 
 Symfony integration for http://customer.io.
 
